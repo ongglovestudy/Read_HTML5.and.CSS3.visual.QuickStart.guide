@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <c-button></c-button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CButton from './components/CButton.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CButton
   }
 }
 </script>
