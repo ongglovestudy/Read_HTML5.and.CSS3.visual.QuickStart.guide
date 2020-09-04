@@ -78,7 +78,11 @@
 </script>
 
 <style>
-    .el-button-group > .el-button.is-active, .el-button-group > .el-button.is-disabled, .el-button-group > .el-button:active, .el-button-group > .el-button:focus, .el-button-group > .el-button:hover {
+    .el-button-group > .el-button.is-active,
+    .el-button-group > .el-button.is-disabled,
+    .el-button-group > .el-button:active,
+    .el-button-group > .el-button:focus,
+    .el-button-group > .el-button:hover {
         z-index: 1
     }
 

@@ -1,16 +1,16 @@
 <template>
   <button
-    :disabled="disable ? 'disabled':''"
+    :disabled="buttonDisable"
     :class="[
       type,
       size,
       {
+        circle: circle,
         round: round,
       }
     ]"
   >
-    <span v-if="$slots.default"><slot></slot></span>
-    <span v-else>提交</span>
+    <slot name="default">提交</slot>
   </button>
 </template>
 
@@ -27,7 +27,8 @@ export default {
       default: 'normal'
     },
     round: Boolean,
-    disable: Boolean,
+    circle: Boolean,
+    disabled: Boolean,
   },
   data() {
     return {
@@ -35,7 +36,9 @@ export default {
     }
   },
   computed: {
-
+    buttonDisable() {
+      return this.disabled
+    }
   }
 }
 </script>
@@ -45,17 +48,22 @@ export default {
   $button-type-color: (
     'danger': #e50b0b,
     'default': #38bee7,
+    'text': #ffffff,
   );
 
   @mixin type($type) {
     $color: map_get($button-type-color, $type);
-    background: rgba($color, 0.6);
+    color: #FFFFFF;
+    @if($type == 'text') {
+      color: #409EFF;
+      background: none;
+    } @else {
+      background: rgba($color, 0.6);
+    }
     border: none;
-    // color: $color;
 
     &:hover {
       background: rgba($color, 0.8);
-      // color: rgb($color, 1);
     }
 
     &:active {
@@ -63,7 +71,7 @@ export default {
     }
 
     &:disabled {
-      background: rgba($color, .1);
+      background: rgba($color, .5);
       cursor: not-allowed;
     }
   }
@@ -74,20 +82,27 @@ export default {
     outline: none;
     // 字体粗细
     font-weight: 300;
+    cursor: pointer;
 
     // 按钮主题
     &.default {
       border-radius: 4px;
-      @include type('default')
+      @include type('default');
     }
     &.danger {
       border-radius: 4px;
-      @include type('danger')
+      @include type('danger');
+    }
+    &.text {
+      @include type('text');
     }
 
     // 按钮圆角
     &.round {
       border-radius: 20px;
+    }
+    &.circle {
+      border-radius: 50%;
     }
 
     // 按钮尺寸
