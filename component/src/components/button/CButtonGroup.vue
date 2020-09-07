@@ -42,6 +42,14 @@
             图标对比的例子
                 https://zhuanlan.zhihu.com/p/199778814
          */
+        /*
+            TODO ant-design 对icon的处理
+            ant即支持 svg引入，也支持iconfont
+            svg引入
+                有ant-icon库中提供的内置icon，也可以引入自己的svg进入<Icon />组件中
+            iconfont组件
+                createFromIconfontCN 帮助使用阿里自身的icon库
+        */
         button:not(:first-child):not(:last-child) {
             border-radius: 0;
         }
